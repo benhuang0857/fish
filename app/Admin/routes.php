@@ -12,5 +12,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
-    $router->resource('fish', FishController::class);
+    $router->resource('fish-machine', MachineManagerController::class);
+    $router->resource('fish-data', FishDataController::class);
 });

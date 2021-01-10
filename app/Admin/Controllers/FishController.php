@@ -26,7 +26,7 @@ class FishController extends AdminController
     {
         $grid = new Grid(new User());
 
-        $grid->column('id', __('Id'));
+        $grid->id('id', __('Id111'))->sortable();
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('password', __('Password'));
@@ -54,6 +54,7 @@ class FishController extends AdminController
         $show->field('remember_token', __('Remember token'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+        
 
         return $show;
     }
