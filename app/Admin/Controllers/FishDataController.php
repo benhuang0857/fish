@@ -17,7 +17,7 @@ class FishDataController extends AdminController
      *
      * @var string
      */
-    protected $title = 'fish_data';
+    protected $title = '機台帳務';
 
     /**
      * Make a grid builder.
@@ -31,10 +31,10 @@ class FishDataController extends AdminController
 
         $grid->column('id', __('Id'))->totalRow('合计');
         $grid->column('mac', __('Mac'));
-        $grid->column('coin_ratio', __('(匯率)Coin ratio'));
-        $grid->column('player_count', __('(玩家總計)Player count'));
-        $grid->column('income', __('(收入)Income'))->totalRow();
-        $grid->column('payout', __('(支出)Payout'))->totalRow();
+        $grid->column('coin_ratio', __('投幣比率'));
+        $grid->column('player_count', __('玩家總計'));
+        $grid->column('income', __('收入'))->totalRow();
+        $grid->column('payout', __('支出'))->totalRow();
         $grid->column('created_time', __('創建時間'));
         $grid->column('update_time', __('更新時間'));
 
@@ -53,12 +53,12 @@ class FishDataController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('mac', __('Mac'));
-        $show->field('coin_ratio', __('Coin ratio'));
-        $show->field('player_count', __('Player count'));
-        $show->field('income', __('Income'));
-        $show->field('payout', __('Payout'));
-        $show->field('created_time', __('Created time'));
-        $show->field('update_time', __('Update time'));
+        $show->field('coin_ratio', __('投幣比率'));
+        $show->field('player_count', __('玩家總計'));
+        $show->field('income', __('收入'));
+        $show->field('payout', __('支出'));
+        $show->field('created_time', __('創建時間'));
+        $show->field('update_time', __('更新時間'));
 
         return $show;
     }
@@ -73,12 +73,12 @@ class FishDataController extends AdminController
         $form = new Form(new fish_data());
 
         $form->text('mac', __('Mac'));
-        $form->number('coin_ratio', __('Coin ratio'));
-        $form->number('player_count', __('Player count'));
-        $form->number('income', __('Income'));
-        $form->number('payout', __('Payout'));
-        $form->datetime('created_time', __('Created time'))->default(date('Y-m-d H:i:s'));
-        $form->datetime('update_time', __('Update time'))->default(date('Y-m-d H:i:s'));
+        $form->number('coin_ratio', __('投幣比率'));
+        $form->number('player_count', __('玩家總計'));
+        $form->number('income', __('收入'));
+        $form->number('payout', __('支出'));
+        $form->datetime('created_time', __('創建時間'))->default(date('Y-m-d H:i:s'));
+        $form->datetime('update_time', __('更新時間'))->default(date('Y-m-d H:i:s'));
 
         return $form;
     }

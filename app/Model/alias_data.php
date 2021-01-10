@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class alias_data extends Model
 {
     protected $table = 'alias_data';
-    public $timestamps = false;
+    protected $fillable = [
+        'mac'
+    ];
 }

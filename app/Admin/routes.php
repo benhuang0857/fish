@@ -14,4 +14,5 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('fish-machine', MachineManagerController::class);
     $router->resource('fish-data', FishDataController::class);
+    $router->resource('player-data', PlayerDataController::class);
 });
