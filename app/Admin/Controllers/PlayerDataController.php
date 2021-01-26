@@ -33,13 +33,8 @@ class PlayerDataController extends AdminController
         $grid->column('mac', __('Mac'));
         $grid->column('num', __('座位號碼'));
         $grid->column('bet', __('壓分'));
-<<<<<<< HEAD
         $grid->column('credits', __('Credits'));
         $grid->column('created_time', __('創建時間'))->sortable();
-=======
-        $grid->column('credits', __('得分'));
-        $grid->column('created_time', __('創建時間'));
->>>>>>> 01bd2b43c83378038e92b050c6348d83d98a863d
         $grid->column('update_time', __('更新時間'));
 
         return $grid;
