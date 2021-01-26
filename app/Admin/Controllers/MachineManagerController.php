@@ -75,10 +75,11 @@ class MachineManagerController extends AdminController
         $form = new Form(new Machine_bind());
 
         $alice = alias_data::all();
-        $mac = array();
+        $mac = [];
 
         foreach($alice as $key=>$value) {  
-            $mac[$key] = $alice[$key]['mac'];  
+            $num = $alice[$key]['mac'];
+            $mac[$num] = $alice[$key]['mac'];
         }
 
         $form->select('bind_mac',__('MAC地址'))->options($mac);
