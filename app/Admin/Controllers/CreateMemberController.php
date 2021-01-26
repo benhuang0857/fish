@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\User;
+use App\Model\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class FishController extends AdminController
+class CreateMemberController extends AdminController
 {
     /**
      * Title for current resource.
@@ -26,7 +26,7 @@ class FishController extends AdminController
     {
         $grid = new Grid(new User());
 
-        $grid->id('id', __('Id111'))->sortable();
+        $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('password', __('Password'));
@@ -54,7 +54,6 @@ class FishController extends AdminController
         $show->field('remember_token', __('Remember token'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
-        
 
         return $show;
     }
@@ -69,9 +68,8 @@ class FishController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', __('Name'));
-        $form->email('email', __('Email'));
+        $form->text('phone', __('phone'));
         $form->password('password', __('Password'));
-        $form->text('remember_token', __('Remember token'));
 
         return $form;
     }

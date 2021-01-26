@@ -15,4 +15,5 @@ Route::group([
     $router->resource('fish-machine', MachineManagerController::class);
     $router->resource('fish-data', FishDataController::class);
     $router->resource('player-data', PlayerDataController::class);
+    $router->resource('create-member', CreateMemberController::class);
 });

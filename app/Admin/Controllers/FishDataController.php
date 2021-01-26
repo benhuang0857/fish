@@ -27,7 +27,8 @@ class FishDataController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new fish_data());
-        $player = new player_data;
+        $player = player_data::all();
+        $player = $player->where('mac', '2882391723459784293');
 
         $grid->column('id', __('Id'))->totalRow('合计');
         $grid->column('mac', __('Mac'));

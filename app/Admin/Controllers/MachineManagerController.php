@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\alias_data;
+use App\Model\fish_data;
 use App\Model\Machine_bind;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -74,12 +74,12 @@ class MachineManagerController extends AdminController
     {
         $form = new Form(new Machine_bind());
 
-        $alice = alias_data::all();
+        $Fish_data = fish_data::all();
         $mac = [];
 
-        foreach($alice as $key=>$value) {  
-            $num = $alice[$key]['mac'];
-            $mac[$num] = $alice[$key]['mac'];
+        foreach($Fish_data as $key=>$value) {  
+            $num = $Fish_data[$key]['mac'];
+            $mac[$num] = $Fish_data[$key]['mac'];
         }
 
         $form->select('bind_mac',__('MAC地址'))->options($mac);
