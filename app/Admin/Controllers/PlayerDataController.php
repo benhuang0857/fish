@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\player_data;
+use App\Model\PlayerData;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -24,7 +24,7 @@ class PlayerDataController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new player_data());
+        $grid = new Grid(new PlayerData());
         $grid->disableCreateButton();
 
         $grid->disableActions();
@@ -48,7 +48,7 @@ class PlayerDataController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(player_data::findOrFail($id));
+        $show = new Show(PlayerData::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('mac', __('Mac'));
@@ -68,7 +68,7 @@ class PlayerDataController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new player_data());
+        $form = new Form(new PlayerData());
 
         $form->number('mac', __('Mac'));
         $form->number('num', __('Num'));

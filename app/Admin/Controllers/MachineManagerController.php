@@ -33,9 +33,16 @@ class MachineManagerController extends AdminController
             $filter->disableIdFilter();
             // 在这里添加字段过滤器
             
-            $filter->equal('state', __('區域'))->select(['A','B','C','D','E','F']);
-            $filter->like('name', __('機台名稱'));
-            $filter->like('bind_mac',__('MAC地址'));
+            $filter->equal('state', __('區域'))->select([
+                'A' => 'A',
+                'B' => 'B',
+                'C' => 'C',
+                'D' => 'D',
+                'E' => 'E',
+                'F' => 'F',
+            ]);
+            $filter->equal('name', __('機台名稱'));
+            $filter->equal('bind_mac',__('MAC地址'));
         });
         
         $grid->column('bind_mac',__('MAC地址'));

@@ -4,7 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Model\FishData;
 use App\Model\MachineBind;
-use App\Model\player_data;
+use App\Model\PlayerData;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -31,13 +31,29 @@ class FishDataController extends AdminController
 
         $grid->filter(function($filter){
             $filter->disableIdFilter();
-            $filter->equal('Machine.state', __('區域'))->select(['A','B','C','D','E','F']);
+            $filter->equal('Machine.state', __('區域'))->select([
+                'A' => 'A',
+                'B' => 'B',
+                'C' => 'C',
+                'D' => 'D',
+                'E' => 'E',
+                'F' => 'F',
+            ]);
             $filter->equal('Machine.name', __('名稱'));
             $filter->equal('mac', __('Mac'));
         });
 
+        $model = new FishData;
+
         $grid->column('Machine.state', __('機台區域'))->totalRow('合計');
-        $grid->column('Machine.name', __('機台名稱'));
+        $grid->column('Machine.name', __('機台名稱'))->expand(function ($model) {
+
+            $comments = $model->Player()->get()->map(function ($comment) {
+                return $comment->only(['num','bet','credits']);
+            });
+        
+            return new Table(['座位編號','壓分','餘分'], $comments->toArray());
+        });
         $grid->column('mac', __('Mac'));
         $grid->column('coin_ratio', __('投幣比率'));
         $grid->column('player_count', __('玩家總計'));

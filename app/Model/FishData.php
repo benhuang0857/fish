@@ -17,4 +17,9 @@ class FishData extends Model
     {
         return $this->belongsTo(MachineBind::class, 'mac', 'bind_mac');
     }
+
+    public function Player()
+    {
+        return $this->hasMany(PlayerData::class, 'mac', 'mac');
+    }
 }
