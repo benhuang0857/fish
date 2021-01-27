@@ -49,10 +49,10 @@ class FishDataController extends AdminController
         $grid->column('Machine.name', __('機台名稱'))->expand(function ($model) {
 
             $comments = $model->Player()->get()->map(function ($comment) {
-                return $comment->only(['num','bet','credits']);
+                return $comment->only(['num','bet','credits', 'update_time']);
             });
         
-            return new Table(['座位編號','壓分','餘分'], $comments->toArray());
+            return new Table(['座位編號','壓分','餘分', '更新時間'], $comments->toArray());
         });
         $grid->column('mac', __('Mac'));
         $grid->column('coin_ratio', __('投幣比率'));
