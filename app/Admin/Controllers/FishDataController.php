@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\fish_data;
+use App\Model\FishData;
+use App\Model\MachineBind;
 use App\Model\player_data;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -26,11 +27,17 @@ class FishDataController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new fish_data());
-        $player = player_data::all();
-        $player = $player->where('mac', '2882391723459784293');
+        $grid = new Grid(new FishData);
 
-        $grid->column('id', __('Id'))->totalRow('合计');
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->equal('Machine.state', __('區域'))->select(['A','B','C','D','E','F']);
+            $filter->equal('Machine.name', __('名稱'));
+            $filter->equal('mac', __('Mac'));
+        });
+
+        $grid->column('Machine.state', __('機台區域'))->totalRow('合計');
+        $grid->column('Machine.name', __('機台名稱'));
         $grid->column('mac', __('Mac'));
         $grid->column('coin_ratio', __('投幣比率'));
         $grid->column('player_count', __('玩家總計'));
@@ -50,7 +57,7 @@ class FishDataController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(fish_data::findOrFail($id));
+        $show = new Show(FishData::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('mac', __('Mac'));
@@ -71,7 +78,7 @@ class FishDataController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new fish_data());
+        $form = new Form(new FishData());
 
         $form->text('mac', __('Mac'));
         $form->number('coin_ratio', __('投幣比率'));

@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\fish_data;
-use App\Model\Machine_bind;
+use App\Model\FishData;
+use App\Model\MachineBind;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -26,20 +26,21 @@ class MachineManagerController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Machine_bind());
+        $grid = new Grid(new MachineBind());
 
         $grid->filter(function($filter){
             // 去掉默认的id过滤器
             $filter->disableIdFilter();
             // 在这里添加字段过滤器
-            $filter->like('bind_mac',__('MAC地址'));
+            
+            $filter->equal('state', __('區域'))->select(['A','B','C','D','E','F']);
             $filter->like('name', __('機台名稱'));
+            $filter->like('bind_mac',__('MAC地址'));
         });
         
         $grid->column('bind_mac',__('MAC地址'));
+        $grid->column('state', __('機台區域'));
         $grid->column('name', __('機台名稱'));
-        $grid->column('state', __('機台縣市'));
-        $grid->column('location', __('機台地址'));
         $grid->column('created_at', __('建立時間'));
 
         return $grid;
@@ -53,12 +54,11 @@ class MachineManagerController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Machine_bind::findOrFail($id));
+        $show = new Show(MachineBind::findOrFail($id));
 
         $show->field('bind_mac',__('MAC地址'));
+        $show->field('state', __('機台區域'));
         $show->field('name', __('機台名稱'));
-        $show->field('state', __('機台縣市'));
-        $show->field('location', __('機台地址'));
         $show->field('created_at', __('建立時間'));
 
         
@@ -72,9 +72,9 @@ class MachineManagerController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Machine_bind());
+        $form = new Form(new MachineBind());
 
-        $Fish_data = fish_data::all();
+        $Fish_data = FishData::all();
         $mac = [];
 
         foreach($Fish_data as $key=>$value) {  
@@ -82,11 +82,18 @@ class MachineManagerController extends AdminController
             $mac[$num] = $Fish_data[$key]['mac'];
         }
 
+        $locations = [
+            'A' => 'A',
+            'B' => 'B',
+            'C' => 'C',
+            'D' => 'D',
+            'E' => 'E',
+            'F' => 'F',
+        ];
+
         $form->select('bind_mac',__('MAC地址'))->options($mac);
+        $form->select('state', __('機台區域'))->options($locations);
         $form->text('name', __('機台名稱'));
-        $form->text('state', __('機台縣市'));
-        $form->text('location', __('機台地址'));
-        $form->text('created_at', __('建立時間'));
 
         $form->confirm('確定創建嗎？', 'create');
 
