@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/devname.php', function () {
+    ob_start();
+    require(path("public")."devname.php");
+    return ob_get_clean();
+});
