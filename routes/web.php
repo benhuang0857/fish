@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::get('/devname.php', function () {
     ob_start();
     require(path("public")."devname.php");
     return ob_get_clean();
 });
+*/
+
+Route::post('/devname.php', 'MachineController@getMachine')->middleware('api');
