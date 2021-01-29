@@ -16,4 +16,5 @@ Route::group([
     $router->resource('fish-data', FishDataController::class);
     $router->resource('player-data', PlayerDataController::class);
     $router->resource('create-member', CreateMemberController::class);
+    $router->resource('show-jackpot', JackpotController::class);
 });

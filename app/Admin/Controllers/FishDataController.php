@@ -31,7 +31,7 @@ class FishDataController extends AdminController
 
         $grid->filter(function($filter){
             $filter->disableIdFilter();
-            $filter->equal('Machine.state', __('區域'))->select([
+            $filter->equal('Machine.state', __('店家區域'))->select([
                 'A' => 'A',
                 'B' => 'B',
                 'C' => 'C',
@@ -39,14 +39,14 @@ class FishDataController extends AdminController
                 'E' => 'E',
                 'F' => 'F',
             ]);
-            $filter->equal('Machine.name', __('名稱'));
-            $filter->equal('mac', __('Mac'));
+            $filter->equal('Machine.name', __('店家名稱'));
+            $filter->equal('mac', __('機台身分證'));
         });
 
         $model = new FishData;
 
         $grid->column('Machine.state', __('機台區域'))->totalRow('合計');
-        $grid->column('Machine.name', __('機台名稱'))->expand(function ($model) {
+        $grid->column('Machine.name', __('店家名稱'))->expand(function ($model) {
 
             $comments = $model->Player()->get()->map(function ($comment) {
                 return $comment->only(['num','bet','credits', 'update_time']);
@@ -54,13 +54,15 @@ class FishDataController extends AdminController
         
             return new Table(['座位編號','壓分','餘分', '更新時間'], $comments->toArray());
         });
-        $grid->column('mac', __('Mac'));
+        
+        $grid->column('Machine.category', __('機台種類'));
         $grid->column('coin_ratio', __('投幣比率'));
         $grid->column('player_count', __('玩家總計'));
         $grid->column('income', __('收入'))->totalRow();
         $grid->column('payout', __('支出'))->totalRow();
         $grid->column('created_time', __('創建時間'));
         $grid->column('update_time', __('更新時間'));
+        $grid->column('mac', __('機台身分證'));
 
         return $grid;
     }
