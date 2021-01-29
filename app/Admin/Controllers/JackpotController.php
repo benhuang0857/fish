@@ -37,7 +37,6 @@ class JackpotController extends AdminController
         $grid->column('jackpot', __('彩金'));
         $grid->column('coins', __('硬幣'));
         $grid->column('datetime', __('時間'));
-        $grid->column('verified', __('是否認證'));
         $grid->column('mac', __('機台身分證'));
 
         return $grid;
