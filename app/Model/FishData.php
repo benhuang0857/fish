@@ -10,7 +10,7 @@ class FishData extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'mac', 'machine_id', 'coin_ratio', 'player_count', 'income', 'payout'
+        'mac', 'machine_id', 'coin_ratio', 'player_count', 'income', 'payout', 'update_time'
     ];
 
     public function Machine()

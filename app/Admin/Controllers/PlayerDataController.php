@@ -25,6 +25,7 @@ class PlayerDataController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new PlayerData());
+        $grid->model()->orderBy('update_time', 'DESC');
         $grid->disableCreateButton();
 
         $grid->disableActions();

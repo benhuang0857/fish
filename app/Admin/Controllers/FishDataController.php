@@ -29,6 +29,8 @@ class FishDataController extends AdminController
     {
         $grid = new Grid(new FishData);
 
+        $grid->model()->orderBy('update_time', 'DESC');
+
         $grid->filter(function($filter){
             $filter->disableIdFilter();
             $filter->equal('Machine.state', __('店家區域'))->select([
@@ -63,6 +65,8 @@ class FishDataController extends AdminController
         $grid->column('created_time', __('創建時間'))->sortable();
         $grid->column('update_time', __('更新時間'))->sortable();
         $grid->column('mac', __('機台身分證'));
+
+        
 
         return $grid;
     }

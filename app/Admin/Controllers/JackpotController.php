@@ -27,6 +27,8 @@ class JackpotController extends AdminController
     {
         $grid = new Grid(new JackpotHistory());
 
+        $grid->model()->orderBy('datetime', 'DESC');
+
         $grid->disableCreateButton();
 
         $grid->disableActions();
