@@ -21,12 +21,12 @@ class MachineController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $mac = $request->mac;
-        $player = $request->player;
+        $player = $request->player + 1;
         
         $Machine = new MachineBind;
         $Machine = MachineBind::where('bind_mac', '=', $mac)->first();
 
-        echo $Machine->state.'區'.$Machine->name.'-'.$player.'號位';
+        echo $Machine->state.'區共創共享'.$Machine->category.'-'.$player.'號玩家';
 
     }
 }
