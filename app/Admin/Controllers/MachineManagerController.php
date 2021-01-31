@@ -48,7 +48,7 @@ class MachineManagerController extends AdminController
         $grid->column('state', __('機台區域'));
         $grid->column('name', __('店家名稱'));
         $grid->column('category', __('機台種類'));
-        $grid->column('created_at', __('建立時間'));
+        $grid->column('created_at', __('建立時間'))->sortable();
         $grid->column('bind_mac',__('機台身分證'));
 
         return $grid;

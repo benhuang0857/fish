@@ -35,7 +35,7 @@ class PlayerDataController extends AdminController
         $grid->column('bet', __('壓分'));
         $grid->column('credits', __('餘分'));
         $grid->column('created_time', __('創建時間'))->sortable();
-        $grid->column('update_time', __('更新時間'));
+        $grid->column('update_time', __('更新時間'))->sortable();
 
         return $grid;
     }

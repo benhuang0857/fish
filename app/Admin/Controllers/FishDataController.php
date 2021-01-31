@@ -60,8 +60,8 @@ class FishDataController extends AdminController
         $grid->column('player_count', __('玩家總計'));
         $grid->column('income', __('收入'))->totalRow();
         $grid->column('payout', __('支出'))->totalRow();
-        $grid->column('created_time', __('創建時間'));
-        $grid->column('update_time', __('更新時間'));
+        $grid->column('created_time', __('創建時間'))->sortable();
+        $grid->column('update_time', __('更新時間'))->sortable();
         $grid->column('mac', __('機台身分證'));
 
         return $grid;

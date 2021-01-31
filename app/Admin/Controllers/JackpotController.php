@@ -36,7 +36,7 @@ class JackpotController extends AdminController
         $grid->column('Machine.category', __('機台種類'));
         $grid->column('jackpot', __('彩金'));
         $grid->column('coins', __('硬幣'));
-        $grid->column('datetime', __('時間'));
+        $grid->column('datetime', __('時間'))->sortable();
         $grid->column('mac', __('機台身分證'));
 
         return $grid;
