@@ -36,7 +36,16 @@ class JackpotController extends AdminController
         $grid->column('Machine.state', __('機台區域'));
         $grid->column('Machine.name', __('店家名稱'));
         $grid->column('Machine.category', __('機台種類'));
-        $grid->column('jackpot', __('彩金'));
+        $grid->column('player', __('座位'))->display(function ($player) {
+            $result = (int)$player;
+            $result += 1;
+            return $result.'號';
+        });
+        $grid->column('jackpot', __('JP'))->display(function ($jackpot) {
+            $result = (int)$jackpot;
+            $result += 1;
+            return 'JP'.$result;
+        });
         $grid->column('coins', __('硬幣'));
         $grid->column('datetime', __('時間'))->sortable();
         $grid->column('mac', __('機台身分證'));

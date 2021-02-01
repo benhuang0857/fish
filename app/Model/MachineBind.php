@@ -21,4 +21,9 @@ class MachineBind extends Model
     {
         return $this->hasMany(JackpotHistory::class, 'bind_mac', 'mac');
     }
+
+    public function PlayerData()
+    {
+        return $this->hasMany(PlayerData::class, 'bind_mac', 'mac');
+    }
 }

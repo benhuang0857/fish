@@ -16,4 +16,14 @@ class JackpotHistory extends Model
     {
         return $this->belongsTo(MachineBind::class, 'mac', 'bind_mac');
     }
+
+    public function PlayerData()
+    {
+        return $this->hasMany(PlayerData::class, 'mac', 'mac');
+    }
+
+    public function FishData()
+    {
+        return $this->hasMany(FishData::class, 'mac', 'mac');
+    }
 }

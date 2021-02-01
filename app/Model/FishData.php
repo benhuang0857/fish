@@ -22,4 +22,9 @@ class FishData extends Model
     {
         return $this->hasMany(PlayerData::class, 'mac', 'mac');
     }
+
+    public function JackpotHistory()
+    {
+        return $this->belongsTo(JackpotHistory::class, 'mac', 'mac');
+    }
 }

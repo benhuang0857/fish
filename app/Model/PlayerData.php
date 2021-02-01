@@ -16,4 +16,14 @@ class PlayerData extends Model
     {
         return $this->belongsTo(FishData::class, 'mac', 'mac');
     }
+
+    public function Machine()
+    {
+        return $this->belongsTo(MachineBind::class, 'mac', 'bind_mac');
+    }
+
+    public function JackpotHistory()
+    {
+        return $this->belongsTo(JackpotHistory::class, 'mac', 'mac');
+    }
 }
