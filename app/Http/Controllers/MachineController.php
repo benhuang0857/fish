@@ -27,7 +27,7 @@ class MachineController extends Controller
         $Machine = MachineBind::where('bind_mac', '=', $mac)->first();
 
         echo header("Content-type:text/html;charset=utf-8");
-        echo $Machine->state.'區共創共享'.$Machine->category.'-'.$player.'號玩家';
+        echo $Machine->state.'區'.$Machine->category.'-'.$player.'號玩家';
 
     }
 }
