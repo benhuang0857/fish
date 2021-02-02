@@ -43,6 +43,7 @@ class FishDataController extends AdminController
                 'F' => 'F',
             ]);
             $filter->equal('Machine.name', __('店家名稱'));
+            $filter->equal('Machine.category', __('機台種類'));
             $filter->equal('mac', __('機台身分證'));
         });
 
