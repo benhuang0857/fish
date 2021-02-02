@@ -42,6 +42,7 @@ class MachineManagerController extends AdminController
                 'F' => 'F',
             ]);
             $filter->equal('name', __('店家名稱'));
+            $filter->equal('category', __('機台種類'));
             $filter->equal('bind_mac',__('機台身分證'));
         });
         

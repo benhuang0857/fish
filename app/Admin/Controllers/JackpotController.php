@@ -33,6 +33,21 @@ class JackpotController extends AdminController
 
         $grid->disableActions();
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->equal('Machine.state', __('店家區域'))->select([
+                'A' => 'A',
+                'B' => 'B',
+                'C' => 'C',
+                'D' => 'D',
+                'E' => 'E',
+                'F' => 'F',
+            ]);
+            $filter->equal('Machine.name', __('店家名稱'));
+            $filter->equal('Machine.category', __('機台種類'));
+            $filter->equal('mac', __('機台身分證'));
+        });
+
         $grid->column('Machine.state', __('機台區域'));
         $grid->column('Machine.name', __('店家名稱'));
         $grid->column('Machine.category', __('機台種類'));
