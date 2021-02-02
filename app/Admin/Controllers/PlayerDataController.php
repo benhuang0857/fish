@@ -30,19 +30,34 @@ class PlayerDataController extends AdminController
 
         $grid->disableActions();
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->equal('Machine.state', __('店家區域'))->select([
+                'A' => 'A',
+                'B' => 'B',
+                'C' => 'C',
+                'D' => 'D',
+                'E' => 'E',
+                'F' => 'F',
+            ]);
+            $filter->equal('Machine.name', __('店家名稱'));
+            $filter->equal('Machine.category', __('機台種類'));
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('Machine.state', __('店家區域'));
         $grid->column('Machine.name', __('店家名稱'));
+        $grid->column('Machine.category', __('機台種類'));
         $grid->column('num', __('座位號碼'))->display(function ($num) {
             $result = (int)$num;
             $result += 1;
             return $result.'號';
         });;
-        $grid->column('bet', __('押分'));
-        $grid->column('credits', __('餘分'));
-        $grid->column('created_time', __('創建時間'))->sortable();
-        $grid->column('update_time', __('更新時間'))->sortable();
-        $grid->column('mac', __('Mac'));
+        $grid->column('bet', __('開分(押分)'));
+        $grid->column('credits', __('洗分(餘分)'));
+        //$grid->column('created_time', __('創建時間'))->sortable();
+        //$grid->column('update_time', __('更新時間'))->sortable();
+        //$grid->column('mac', __('Mac'));
 
         return $grid;
     }
