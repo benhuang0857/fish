@@ -29,10 +29,7 @@ class MachineManagerController extends AdminController
         $grid = new Grid(new MachineBind());
 
         $grid->filter(function($filter){
-            // 去掉默认的id过滤器
             $filter->disableIdFilter();
-            // 在这里添加字段过滤器
-            
             $filter->equal('state', __('店家區域'))->select([
                 'A' => 'A',
                 'B' => 'B',
